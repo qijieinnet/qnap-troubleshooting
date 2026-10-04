@@ -11,7 +11,7 @@
 # QTS may reset APM during startup, so we apply it twice: 2 and 10 minutes
 # after boot. A log is written to /tmp/apm254.log (RAM, lost on reboot).
 #
-# Install: see README.md -> "Fix 1".
+# Install: see README.md in this folder, "元凶 1".
 (
   for delay in 120 480; do
     sleep $delay

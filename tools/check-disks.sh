@@ -1,7 +1,7 @@
 #!/bin/sh
 # Show APM level and head-parking statistics for every spinning disk.
 #
-# Run inside the helper container (see README.md -> "Helper container"):
+# Run inside the helper container (see tools/README.md):
 #   apk add -q hdparm smartmontools
 #   sh check-disks.sh
 #

@@ -15,6 +15,6 @@ sqlite3 /tmp/event.db "SELECT event_date, count(*) FROM NASLOG_EVENT
   WHERE event_desc LIKE '%auto-LAN discovery%' GROUP BY event_date ORDER BY event_date DESC LIMIT 10;"
 
 echo "== latest 10 updates (look at the IPv6 'Source' list: a single /128 address"
-echo "   that keeps appearing and disappearing is a route-cache entry, see README)"
+echo "   that keeps appearing and disappearing is a route-cache entry, see posts/2026-10-03-hdd-noise-and-standby)"
 sqlite3 /tmp/event.db "SELECT event_date||' '||event_time, substr(event_desc, 1, 220) FROM NASLOG_EVENT
   WHERE event_desc LIKE '%auto-LAN discovery%' ORDER BY event_id DESC LIMIT 10;"

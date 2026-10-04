@@ -2,7 +2,7 @@
 # Record WHICH PROCESS writes WHICH FILE on HDD-backed filesystems,
 # plus the real write counters of the HDDs once per minute.
 #
-# Run inside the helper container started with `-v /:/host:ro` (README.md):
+# Run inside the helper container started with `-v /:/host:ro` (see tools/README.md):
 #   sh watch-hdd-writes.sh 2400 > writes.log     # 2400 s = 40 min
 #
 # Close the QTS web UI while measuring: the admin pages poll CGIs that write
