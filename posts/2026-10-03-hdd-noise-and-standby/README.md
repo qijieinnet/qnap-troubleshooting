@@ -11,6 +11,8 @@
 
 **English TL;DR** — On QNAP, the system partitions (`md9` = `/mnt/HDA_ROOT`, `md13` = `/mnt/ext`) are RAID1-mirrored onto **every internal disk**, including HDDs, even if your data volumes live on SSDs. Any write to config/log files wakes the HDDs. We found four culprits: (1) APM 128 causing ~35 head unloads/hour on Seagate IronWolf (fix: `hdparm -B 254` via `autorun.sh`), (2) QuFirewall rewriting its config every minute (fix: disable "firewall events"), (3) `storage_usage.sh` cron writing every 10 min (fix: change cron to daily), (4) QuFirewall regenerating auto-LAN rules + sshd_config every time an IPv6 **route-cache** entry appears/expires — triggered by a monitoring agent that looked up the public IPv6 address every few minutes (fix: block those lookups). Result: HDDs untouched for 40 min straight, Load_Cycle_Count frozen.
 
+11 月升级到 QTS 6.1 后，机械盘再次出现寻道声，磁头停靠计数保持稳定。后续定位到系统内核日志频繁写盘，迁移到 SSD 后通过了整机重启验证。[后续排查记录](../2026-11-18-kmsg-on-ssd/)
+
 ---
 
 ## 目录
